@@ -24,11 +24,17 @@ custom:
 
 functions:
   dockerized-serverless-fun1:
-    handler: app/index.handler
+    handler: app/index.putDcument
     events:
     - http:
         method: get
         path: hello
+  dockerized-serverless-query:
+    handler: app/index.queryDocuments
+    events:
+    - http:
+        method: get
+        path: query
 
 resources:
   Resources:
