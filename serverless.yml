@@ -1,0 +1,16 @@
+service: my-express-application
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-offline
+
+functions:
+  app:
+    handler: app/index.handler
+    events:
+    - http:
+        method: get
+        path: hello

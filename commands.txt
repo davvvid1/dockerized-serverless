@@ -1,0 +1,2 @@
+./node_modules/.bin/serverless offline start
+curl localhost:3000/hello && echo
