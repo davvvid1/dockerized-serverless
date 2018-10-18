@@ -9,3 +9,9 @@ services:
       - 3000:3000
     volumes:
       - ./app:/serverless/app
+    links:
+      - dynamodb
+  dynamodb:
+    image: amazon/dynamodb-local
+    ports:
+      - 8000:8000

@@ -3,6 +3,17 @@ service: my-express-application
 provider:
   name: aws
   runtime: nodejs8.10
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+    - dynamodb:Query
+    - dynamodb:Scan
+    - dynamodb:GetItem
+    - dynamodb:PutItem
+    - dynamodb:UpdateItem
+    - dynamodb:DeleteItem
+    Resource:
+    - { "Fn::GetAtt": ["TestDBTable", "Arn" ] }
 
 plugins:
   - serverless-offline
@@ -18,3 +29,19 @@ functions:
     - http:
         method: get
         path: hello
+
+resources:
+  Resources:
+    TestDBTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: serverless-table
+        AttributeDefinitions:
+        - AttributeName: propertyA
+          AttributeType: S
+        KeySchema:
+        - AttributeName: propertyA
+          KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
