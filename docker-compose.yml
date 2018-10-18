@@ -6,4 +6,6 @@ services:
       dockerfile: ./docker/Dockerfile
     image: serverless-app
     ports:
-      - '3000:3000'
+      - 3000:3000
+    volumes:
+      - ./app:/serverless/app
