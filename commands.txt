@@ -1,2 +1,4 @@
 ./node_modules/.bin/serverless offline start
 curl localhost:3000/hello && echo
+
+AWS_ACCESS_KEY_ID=AKIAJIKSOCBV5Z3CGBKA AWS_SECRET_ACCESS_KEY=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 ./node_modules/.bin/serverless deploy
